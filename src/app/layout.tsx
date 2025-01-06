@@ -1,7 +1,6 @@
 import './globals.css'
 
 import type { Metadata } from 'next'
-// eslint-disable-next-line camelcase
 import { Inter } from 'next/font/google'
 
 const inter = Inter({
