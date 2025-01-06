@@ -1,14 +1,10 @@
 'use client'
-import { Button } from '@/components/Button'
+import { Input } from '@/components/Input'
 
 export default function Home() {
-  const teste = () => {
-    console.log('teste')
-  }
-
   return (
     <div className="flex items-center justify-center h-screen">
-      <Button onClick={teste}>Concluir transação</Button>
+      <Input label="teste" type="number" defaultValue="0.00" />
     </div>
   )
 }
