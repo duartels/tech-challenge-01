@@ -3,9 +3,9 @@ import { NextApiRequest } from 'next'
 import { NextResponse } from 'next/server'
 
 import { TransactionSourceFacade } from '@/data-source'
+import { Transaction } from '@/domain'
 
-const transactionsSource = new TransactionSourceFacade()
-const transactions = transactionsSource.getAll()
+const transactions = TransactionSourceFacade.getAll()
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url)
@@ -25,15 +25,24 @@ export async function GET(req: Request) {
     )
   }
 
-  return NextResponse.json(transactionsSource)
+  return NextResponse.json(transactions)
 }
 
-export async function POST(req: NextApiRequest) {
-  const newTransaction = { id: Date.now(), ...req.body }
-  transactionsSource.save(newTransaction)
-  return NextResponse.json(newTransaction)
-}
+export async function POST(req: Request) {
+  const body = await req.json()
 
+  const newTransactions: Transaction[] = body.transactions.map(
+    (transaction: Transaction) => {
+      return { ...transaction }
+    },
+  )
+
+  newTransactions.forEach((transaction) => {
+    transactions.push(transaction)
+  })
+
+  return NextResponse.json(newTransactions)
+}
 export async function PUT(req: NextApiRequest) {
   const { id } = req.query
   const index = transactions.findIndex(

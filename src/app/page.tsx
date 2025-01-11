@@ -1,22 +1,29 @@
 'use client'
-import { useEffect } from 'react'
 
 import { Button } from '@/components/Button'
 import { Input } from '@/components/Input'
-import { StorageFacade } from '@/data-access'
+import { TransactionFacade } from '@/data-access/application/transaction.facade'
+import { Transaction } from '@/domain'
+import { useValidateAndSyncData } from '@/hooks'
 
 export default function Home() {
-  const storage = new StorageFacade()
+  useValidateAndSyncData()
 
   const handleTransaction = async () => {
-    console.log('handleTransaction')
+    const newTransaction: Transaction[] = [
+      {
+        id: 1,
+        amount: 100,
+        category: 'teste',
+        description: 'teste',
+        type: 'income',
+        user: 'teste',
+        date: new Date(),
+      },
+    ]
+    const createdTransaction = TransactionFacade.save(newTransaction)
+    console.log(createdTransaction)
   }
-
-  useEffect(() => {
-    storage.getAll().then((data) => {
-      console.log('use effect -> data', data)
-    })
-  })
 
   return (
     <div className="flex items-center justify-center h-screen">

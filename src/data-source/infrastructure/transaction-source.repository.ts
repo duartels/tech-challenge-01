@@ -2,19 +2,17 @@ import { Transaction } from '@/domain'
 import { UpdateTransactionDto } from '@/domain/dtos'
 
 export class TransactionSourceRepository {
-  #transactions: Transaction[] = []
+  static #transactions: Transaction[] = []
 
-  getAll() {
-    console.log('Getting transactions from source', this.#transactions)
-
+  static getAll() {
     return this.#transactions
   }
 
-  save(transaction: Transaction) {
+  static save(transaction: Transaction) {
     this.#transactions.push(transaction)
   }
 
-  update(id: number, updatedData: UpdateTransactionDto) {
+  static update(id: number, updatedData: UpdateTransactionDto) {
     const index = this.#transactions.findIndex(
       (transaction) => transaction.id === id,
     )

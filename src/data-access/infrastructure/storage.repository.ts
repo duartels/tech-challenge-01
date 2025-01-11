@@ -1,39 +1,43 @@
-import { TransactionSourceFacade } from '@/data-source'
-import { Storage, StorageAbsRepository, Transaction } from '@/domain'
+import { Transaction } from '@/domain'
 
+import { StorageFacade } from '../application'
 import { TransactionFacade } from '../application/transaction.facade'
 
-export class StorageRepository implements StorageAbsRepository<Storage> {
-  #STORAGE_KEY = 'transactions'
-  #transactionFacade = new TransactionFacade()
-  #transactionSource = new TransactionSourceFacade()
+export class StorageRepository {
+  static #STORAGE_KEY = 'transactions'
 
-  async getAll(): Promise<Storage> {
-    const transactions = await this.#transactionFacade.getAll()
+  static getAll() {
+    const localTransactions = TransactionFacade.getAll()
 
-    if (transactions.length) {
-      localStorage.setItem(this.#STORAGE_KEY, JSON.stringify(transactions))
-      return { transactions }
+    if (localTransactions.length) {
+      localStorage.setItem(this.#STORAGE_KEY, JSON.stringify(localTransactions))
+      return { transactions: localTransactions }
     }
 
     const data = localStorage.getItem(this.#STORAGE_KEY)
 
     if (data) {
-      const dataToSave: Transaction[] = JSON.parse(data)
-      await this.#transactionFacade.save(dataToSave)
-      this.#transactionSource.save(dataToSave)
-
-      return { transactions: dataToSave }
+      StorageFacade.syncLocalStorageWithServer()
+      return { transactions: data }
     }
 
     return { transactions: [] }
   }
 
-  async syncWithServer() {
+  static fetchFromLocalStorage() {
     const data = localStorage.getItem(this.#STORAGE_KEY)
-    if (data) {
-      const transactions: Transaction[] = JSON.parse(data)
-      this.#transactionSource.save(transactions)
-    }
+    return data ? JSON.parse(data) : []
+  }
+
+  static postToMockServer(transactions: Transaction[]) {
+    if (!transactions.length) return
+
+    return fetch('/api/transaction', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ transactions }),
+    })
   }
 }

@@ -1,8 +1,12 @@
-import { Option } from '@/components/Select'
+import { TransactionLabel, TransactionValue } from '@/domain/enums'
+import { Option } from '@/domain/types'
 
 export const transactionOptions: Option[] = [
-  { value: 'cambio', label: 'Câmbio de Moeda' },
-  { value: 'doc-ted', label: 'DOC/TED' },
-  { value: 'emprestimo-finan', label: 'Empréstimo e Financiamento' },
-  { value: 'deposito', label: 'Depósito' },
+  { value: TransactionValue.cambio, label: TransactionLabel.cambio },
+  { value: TransactionValue.docTed, label: TransactionLabel.docTed },
+  {
+    value: TransactionValue.emprestimoFinan,
+    label: TransactionLabel.emprestimoFinan,
+  },
+  { value: TransactionValue.deposito, label: TransactionLabel.deposito },
 ] as const

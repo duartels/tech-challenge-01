@@ -1,19 +1,18 @@
 import { TransactionSourceFacade } from '@/data-source'
 import { Transaction } from '@/domain'
-import { TransactionAbsRepository } from '@/domain/infrastructure/transaction.abs.repository'
 
-export class TransactionRepository implements TransactionAbsRepository {
-  #STORAGE_KEY = 'transactions'
-  #transactionSource = new TransactionSourceFacade()
+export class TransactionRepository {
+  static #STORAGE_KEY = 'transactions'
 
-  getAll(): Transaction[] {
+  static getAll(): Transaction[] {
     const data = localStorage.getItem(this.#STORAGE_KEY)
 
     if (data) {
-      const dataSource = this.#transactionSource.getAll()
+      const dataSource = TransactionSourceFacade.getAll()
+      console.log('dataSource', dataSource)
 
       if (!dataSource.length) {
-        this.#transactionSource.save(JSON.parse(data))
+        TransactionSourceFacade.save(JSON.parse(data))
       }
       return JSON.parse(data)
     }
@@ -21,12 +20,14 @@ export class TransactionRepository implements TransactionAbsRepository {
     return []
   }
 
-  save(transaction: Transaction): void {
+  static save(transaction: Transaction) {
     const transactions = this.getAll()
     transactions.push(transaction)
+    localStorage.setItem(this.#STORAGE_KEY, JSON.stringify(transactions))
+    return transaction
   }
 
-  update(id: number, updatedData: Partial<Transaction>): void {
+  static update(id: number, updatedData: Partial<Transaction>): void {
     const transactions = this.getAll()
     const transaction = transactions.find(
       (transaction) => transaction.id === id,

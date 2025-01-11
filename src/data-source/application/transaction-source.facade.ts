@@ -3,15 +3,16 @@ import { Transaction } from '@/domain'
 import { TransactionSourceRepository } from '../infrastructure/transaction-source.repository'
 
 export class TransactionSourceFacade {
-  #repository = new TransactionSourceRepository()
-
-  getAll() {
-    return this.#repository.getAll()
+  static getAll() {
+    return TransactionSourceRepository.getAll()
   }
 
-  save(transaction: Transaction[]) {
+  static save(transaction: Transaction[] = []) {
+    if (!transaction.length) {
+      return
+    }
     transaction.forEach((transaction) => {
-      return this.#repository.save(transaction)
+      return TransactionSourceRepository.save(transaction)
     })
   }
 }

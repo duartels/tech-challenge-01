@@ -1,15 +1,41 @@
-import { Storage, StorageAbsFacade } from '@domain/index'
+import { Transaction } from '@/domain'
 
 import { StorageRepository } from '../infrastructure/storage.repository'
 
-export class StorageFacade implements StorageAbsFacade {
-  private storageRepository = new StorageRepository()
+export class StorageFacade {
+  static async syncLocalStorageWithServer() {
+    const localTransactions = StorageRepository.fetchFromLocalStorage()
+    const response = await fetch('/api/transaction')
+    const transactions: Transaction[] = await response.json()
 
-  async getAll(): Promise<Storage> {
-    return await this.storageRepository.getAll()
+    const syncTransactions = this.compareTransactions(
+      localTransactions,
+      transactions,
+    )
+
+    await StorageRepository.postToMockServer(syncTransactions)
+    return localTransactions
   }
 
-  async syncWithServer(): Promise<void> {
-    await this.storageRepository.syncWithServer()
+  static getAll() {
+    return StorageRepository.getAll()
+  }
+
+  private static compareTransactions(
+    localTransactions: Transaction[],
+    serverTransactions: Transaction[],
+  ) {
+    console.log('localTransactions', localTransactions)
+    console.log('serverTransactions', serverTransactions)
+
+    const serverIds = serverTransactions.map(
+      (transaction: Transaction) => transaction.id,
+    )
+
+    const newTransactions = localTransactions.filter(
+      (transaction) => !serverIds.includes(transaction.id),
+    )
+
+    return newTransactions
   }
 }
