@@ -5,12 +5,13 @@ import { StorageRepository } from '../infrastructure/storage.repository'
 export class StorageFacade {
   static async syncLocalStorageWithServer() {
     const localTransactions = StorageRepository.fetchFromLocalStorage()
-    const response = await fetch('/api/transaction')
-    const transactions: Transaction[] = await response.json()
+    const apiTransactions: Transaction[] = await fetch('/api/transaction').then(
+      (res) => res.json(),
+    )
 
     const syncTransactions = this.compareTransactions(
       localTransactions,
-      transactions,
+      apiTransactions,
     )
 
     await StorageRepository.postToMockServer(syncTransactions)
@@ -25,9 +26,6 @@ export class StorageFacade {
     localTransactions: Transaction[],
     serverTransactions: Transaction[],
   ) {
-    console.log('localTransactions', localTransactions)
-    console.log('serverTransactions', serverTransactions)
-
     const serverIds = serverTransactions.map(
       (transaction: Transaction) => transaction.id,
     )

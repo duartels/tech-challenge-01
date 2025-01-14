@@ -9,11 +9,9 @@ export class TransactionRepository {
 
     if (data) {
       const dataSource = TransactionSourceFacade.getAll()
-      console.log('dataSource', dataSource)
 
-      if (!dataSource.length) {
-        TransactionSourceFacade.save(JSON.parse(data))
-      }
+      if (!dataSource.length) TransactionSourceFacade.save(JSON.parse(data))
+
       return JSON.parse(data)
     }
 
@@ -29,9 +27,7 @@ export class TransactionRepository {
 
   static update(id: number, updatedData: Partial<Transaction>): void {
     const transactions = this.getAll()
-    const transaction = transactions.find(
-      (transaction) => transaction.id === id,
-    )
+    const transaction = transactions.find((t) => t.id === id)
     if (transaction) {
       Object.assign(transaction, updatedData)
       localStorage.setItem(this.#STORAGE_KEY, JSON.stringify(transactions))
