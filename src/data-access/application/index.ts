@@ -1,1 +1,1 @@
-export * from './storage.facade';
+export * from './storage.facade'

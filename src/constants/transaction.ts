@@ -1,12 +1,11 @@
-import { TransactionLabel, TransactionValue } from '@/domain/enums'
-import { Option } from '@/domain/types'
+import { Option, TransactionLabel, TransactionValue } from '@domain'
 
 export const transactionOptions: Option[] = [
-  { value: TransactionValue.cambio, label: TransactionLabel.cambio },
-  { value: TransactionValue.docTed, label: TransactionLabel.docTed },
+  { value: TransactionValue.CAMBIO, label: TransactionLabel.LABEL_CAMBIO },
+  { value: TransactionValue.DOC_TED, label: TransactionLabel.LABEL_DOC_TED },
   {
-    value: TransactionValue.emprestimoFinan,
-    label: TransactionLabel.emprestimoFinan,
+    value: TransactionValue.EMPRESTIMO_FIN,
+    label: TransactionLabel.LABEL_EMPRESTIMO_FIN,
   },
-  { value: TransactionValue.deposito, label: TransactionLabel.deposito },
+  { value: TransactionValue.DEPOSITO, label: TransactionLabel.LABEL_DEPOSITO },
 ] as const

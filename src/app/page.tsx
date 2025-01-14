@@ -1,7 +1,8 @@
 'use client'
 
+import { useValidateAndSyncData } from '@hooks'
+
 import { Input } from '@/components/Input'
-import { useValidateAndSyncData } from '@/hooks'
 
 export default function Home() {
   useValidateAndSyncData()

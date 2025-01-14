@@ -1,2 +1,2 @@
-export * from './storage.abs.facade';
-export * from './transaction.abs.facade';
+export * from './storage.abs.facade'
+export * from './transaction.abs.facade'

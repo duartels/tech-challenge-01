@@ -1,4 +1,4 @@
-import { Transaction } from '@/domain'
+import { Transaction } from '@domain'
 
 import { StorageRepository } from '../infrastructure/storage.repository'
 

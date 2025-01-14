@@ -1,5 +1,4 @@
-import { Transaction } from '@/domain'
-import { UpdateTransactionDto } from '@/domain/dtos'
+import { Transaction, UpdateTransactionDto } from '@domain'
 
 export class TransactionSourceRepository {
   static #transactions: Transaction[] = []

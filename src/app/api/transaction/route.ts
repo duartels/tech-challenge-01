@@ -1,9 +1,8 @@
 'use server'
+import { TransactionSourceFacade } from '@data-source'
+import { Transaction } from '@domain'
 import { NextApiRequest } from 'next'
 import { NextResponse } from 'next/server'
-
-import { TransactionSourceFacade } from '@/data-source'
-import { Transaction } from '@/domain'
 
 const transactions = TransactionSourceFacade.getAll()
 
@@ -12,9 +11,7 @@ export async function GET(req: Request) {
   const id = searchParams.get('id')
 
   if (id) {
-    const transaction = transactions.find(
-      (transaction) => transaction.id === Number(id),
-    )
+    const transaction = transactions.find((trn) => trn.id === Number(id))
 
     if (transaction) {
       return NextResponse.json(transaction)

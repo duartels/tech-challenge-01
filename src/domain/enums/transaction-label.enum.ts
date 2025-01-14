@@ -1,6 +1,6 @@
 export enum TransactionLabel {
-  cambio = 'Câmbio de Moeda',
-  docTed = 'DOC/TED',
-  emprestimoFinan = 'Empréstimo e Financiamento',
-  deposito = 'Depósito',
+  LABEL_CAMBIO = 'Câmbio de Moeda',
+  LABEL_DOC_TED = 'DOC/TED',
+  LABEL_EMPRESTIMO_FIN = 'Empréstimo e Financiamento',
+  LABEL_DEPOSITO = 'Depósito',
 }

@@ -1,6 +1,5 @@
+import { StorageFacade } from '@data-access'
 import { useEffect, useMemo } from 'react'
-
-import { StorageFacade } from '@/data-access'
 
 export const useValidateAndSyncData = () => {
   const storage = useMemo(() => new StorageFacade(), [])

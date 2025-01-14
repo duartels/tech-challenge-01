@@ -1,1 +1,1 @@
-export * from './transaction-source.facade';
+export * from './transaction-source.facade'

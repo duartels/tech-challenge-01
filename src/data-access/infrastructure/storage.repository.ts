@@ -1,4 +1,4 @@
-import { Transaction } from '@/domain'
+import { Transaction } from '@domain'
 
 import { StorageFacade } from '../application'
 import { TransactionFacade } from '../application/transaction.facade'

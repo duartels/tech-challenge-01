@@ -1,4 +1,4 @@
-import { Transaction } from '@/domain'
+import { Transaction } from '@domain'
 
 import { TransactionSourceRepository } from '../infrastructure/transaction-source.repository'
 
@@ -11,8 +11,8 @@ export class TransactionSourceFacade {
     if (!transaction.length) {
       return
     }
-    transaction.forEach((transaction) => {
-      return TransactionSourceRepository.save(transaction)
+    transaction.forEach((trn) => {
+      return TransactionSourceRepository.save(trn)
     })
   }
 }

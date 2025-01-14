@@ -1,6 +1,5 @@
+import { SelectProps } from '@domain'
 import { useEffect, useRef, useState } from 'react'
-
-import { SelectProps } from '@/domain/types'
 
 export const Select = ({
   options,

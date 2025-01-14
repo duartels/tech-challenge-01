@@ -1,5 +1,6 @@
+import { Transaction } from '@domain'
+
 import { TransactionSourceFacade } from '@/data-source'
-import { Transaction } from '@/domain'
 
 export class TransactionRepository {
   static #STORAGE_KEY = 'transactions'
