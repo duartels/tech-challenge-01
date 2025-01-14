@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "ES2022",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
+    "allowJs": false,
+    "importHelpers": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
@@ -19,7 +20,11 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@domain": ["./src/domain/index.ts"],
+      "@hooks": ["./src/hooks/index.ts"], 
+      "@data-source": ["./src/data-source/index.ts"],
+      "@data-access": ["./src/data-access/index.ts"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
