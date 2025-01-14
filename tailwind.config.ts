@@ -15,7 +15,10 @@ export default {
         secondary: '#FF5031',
         tertiary: '#DEE9EA',
         quarternary: '#F8F8F8',
-        black: '#444444',
+        black: {
+          default: '#000000',
+          grayish: '#444444'
+        },
       },
       fontFamily: {
         inter: ['var(--font-inter)', 'Inter', 'sans-serif'],
