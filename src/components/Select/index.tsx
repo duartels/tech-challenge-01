@@ -1,16 +1,5 @@
+import { SelectProps } from '@domain'
 import { useEffect, useRef, useState } from 'react'
-
-export type Option = {
-  value: string
-  label: string
-}
-
-export type SelectProps = {
-  options: Option[]
-  placeholder: string
-  value: string
-  onChange: (value: string) => void
-}
 
 export const Select = ({
   options,
