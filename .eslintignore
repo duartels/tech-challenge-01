@@ -1,6 +1,0 @@
-node_modules
-.husky
-.next
-package.json
-package-lock.json
-dist
