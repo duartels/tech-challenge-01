@@ -1,7 +1,8 @@
 'use client'
 
 type ButtonProps = {
-  children: React.ReactNode
+  children: React.ReactNode,
+  type?: 'button' | 'submit' | 'reset'
 } & React.HTMLAttributes<HTMLButtonElement>
 
 export const Button = ({ children, ...props }: ButtonProps) => {
