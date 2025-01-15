@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react'
+
 import { Option } from './option.type'
 
 export type SelectProps = {
