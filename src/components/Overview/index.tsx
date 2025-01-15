@@ -1,12 +1,10 @@
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+import Image from 'next/image'
 import { useState } from 'react'
 import { FaEye } from 'react-icons/fa'
 
-export type OverviewProps = {
-  accountBalance: number
-  accountName: string
-}
+import { OverviewProps } from '@/domain/types/overview.type'
 
 export const Overview = ({ accountBalance, accountName }: OverviewProps) => {
   const [isBalanceVisible, setIsBalanceVisible] = useState(true)
@@ -21,7 +19,9 @@ export const Overview = ({ accountBalance, accountName }: OverviewProps) => {
   })
 
   return (
-    <div className="bg-primary w-[321px] h-[655px] sm:w-[600px] sm:h-[402] md:w-[690px] rounded-lg">
+    <div 
+      className={`flex flex-col justify-between sm:justify-normal bg-primary w-[321px] h-[655px] sm:w-[600px] sm:h-[402px] md:w-[690px] rounded-lg bg-[url('/overview-top-mobile.svg'),url('/overview-bottom-mobile.svg')] sm:bg-[url('/overview-top.svg'),url('/overview-bottom.svg')] md:bg-none bg-no-repeat [background-position:top_left,bottom_right] sm:[background-position:top_right,bottom_left]` }
+    >
       <div className="flex flex-col gap-10 sm:gap-0 items-center sm:items-start sm:flex-row justify-between p-10 sm:p-8">
         <div className="flex flex-col gap-6">
           <h1 className="font-bold text-2xl">Olá, {accountName}! :)</h1>
@@ -31,7 +31,7 @@ export const Overview = ({ accountBalance, accountName }: OverviewProps) => {
           </p>
         </div>
 
-        <div className="sm:pt-24 sm:pr-24">
+        <div className="sm:pt-[60px] sm:pr-24">
           <div className="flex gap-6 items-center">
             <p className="font-bold text-xl">Saldo</p>
             <FaEye
@@ -53,6 +53,16 @@ export const Overview = ({ accountBalance, accountName }: OverviewProps) => {
               : '???????'}
           </p>
         </div>
+      </div>
+
+      <div className='pb-8 sm:pb-0 sm:pl-8 flex justify-center sm:justify-start sm:relative md:hidden'>
+        <Image 
+          src="/overview-money.svg" 
+          alt='Money illustration' 
+          width={283}
+          height={228}
+          className='sm:absolute sm:top-[-100px]'
+        />
       </div>
     </div>
   )
