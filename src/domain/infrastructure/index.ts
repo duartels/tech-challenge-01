@@ -1,1 +1,1 @@
-export * from './storage.abs.repository'
+export * from './base.abs.repository'

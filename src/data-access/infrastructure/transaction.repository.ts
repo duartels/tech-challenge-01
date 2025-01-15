@@ -34,4 +34,15 @@ export class TransactionRepository {
       localStorage.setItem(this.#STORAGE_KEY, JSON.stringify(transactions))
     }
   }
+
+  static delete(id: number): void {
+    const transactions = this.getAll()
+    const newTransactions = transactions.filter((t) => t.id !== id)
+    localStorage.setItem(this.#STORAGE_KEY, JSON.stringify(newTransactions))
+  }
+
+  static getOne(id: number): Transaction {
+    const transactions = this.getAll()
+    return transactions.find((t) => t.id === id) || {} as Transaction
+  }
 }

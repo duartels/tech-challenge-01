@@ -34,9 +34,7 @@ export async function POST(req: Request) {
     },
   )
 
-  newTransactions.forEach((transaction) => {
-    transactions.push(transaction)
-  })
+  TransactionSourceFacade.save(newTransactions)
 
   return NextResponse.json(newTransactions)
 }
@@ -45,17 +43,28 @@ export async function PUT(req: NextApiRequest) {
   const index = transactions.findIndex(
     (transaction) => transaction.id === Number(id),
   )
-  if (index > -1) {
-    transactions[index] = { ...transactions[index], ...req.body }
-    return NextResponse.json(transactions[index])
+
+  if (index !== -1) {
+    const { body } = req
+    TransactionSourceFacade.update(Number(id), body)
+    return NextResponse.json({ ...transactions[index], ...body })
   }
-  return NextResponse.json({ error: 'Transaction not found' }, { status: 404 })
+
+  return NextResponse.json({ error: 'Transação não encontrada' }, { status: 404 })
 }
 
 export async function DELETE(req: NextApiRequest) {
   const index = transactions.findIndex(
     (transaction) => transaction.id === Number(req.query.id),
   )
+
+  if (index === -1) {
+    return NextResponse.json({ error: 'Transação não encontrada' }, { status: 404 })
+  }
+
+  TransactionSourceFacade.delete(Number(req.query.id))
+
   transactions.splice(index, 1)
-  return NextResponse.json(undefined, { status: 204 })
+
+  return NextResponse.json({ message: "Deletado com sucesso" }, { status: 204 })
 }

@@ -15,4 +15,16 @@ export class TransactionSourceFacade {
       return TransactionSourceRepository.save(trn)
     })
   }
+
+  static update(id: number, updatedData: Partial<Transaction>) {
+    return TransactionSourceRepository.update(id, updatedData)
+  }
+
+  static delete(id: number) {
+    return TransactionSourceRepository.delete(id)
+  }
+
+  static getOne(id: number) {
+    return TransactionSourceRepository.getOne(id)
+  }
 }
