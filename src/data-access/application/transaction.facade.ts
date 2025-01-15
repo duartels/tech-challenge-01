@@ -1,4 +1,4 @@
-import { Transaction } from '@domain'
+import { CreateTransactionDto,Transaction } from '@domain'
 
 import { TransactionRepository } from '../infrastructure/transaction.repository'
 
@@ -8,10 +8,8 @@ export class TransactionFacade {
     return TransactionRepository.getAll()
   }
 
-  static save(transactions: Transaction[]) {
-    transactions.forEach((transaction) => {
-      return TransactionRepository.save(transaction)
-    })
+  static async save(transaction: CreateTransactionDto) {
+    return TransactionRepository.save(transaction)
   }
 
   static getOne(id: number): Transaction {

@@ -1,6 +1,6 @@
 'use server'
 import { TransactionSourceFacade } from '@data-source'
-import { Transaction } from '@domain'
+import { CreateTransactionDto, Transaction } from '@domain'
 import { NextApiRequest } from 'next'
 import { NextResponse } from 'next/server'
 
@@ -28,15 +28,15 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   const body = await req.json()
 
-  const newTransactions: Transaction[] = body.transactions.map(
-    (transaction: Transaction) => {
-      return { ...transaction }
-    },
-  )
-
+  const newTransactions: CreateTransactionDto | Transaction[] = body.transactions;
+  
   TransactionSourceFacade.save(newTransactions)
 
-  return NextResponse.json(newTransactions)
+  if (Array.isArray(newTransactions)) {
+    return NextResponse.json(newTransactions, { status: 201 })
+  }
+  
+  return NextResponse.json({ status: 201 })
 }
 export async function PUT(req: NextApiRequest) {
   const { id } = req.query

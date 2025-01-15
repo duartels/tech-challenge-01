@@ -1,4 +1,4 @@
-import { Transaction } from '@domain'
+import { CreateTransactionDto, Transaction } from '@domain'
 
 import { TransactionSourceRepository } from '../infrastructure/transaction-source.repository'
 
@@ -7,13 +7,12 @@ export class TransactionSourceFacade {
     return TransactionSourceRepository.getAll()
   }
 
-  static save(transaction: Transaction[] = []) {
-    if (!transaction.length) {
-      return
+  static save(transaction: CreateTransactionDto | Transaction[]) {
+    if (Array.isArray(transaction)) {
+      return transaction.forEach((trn) => TransactionSourceRepository.save(trn))
     }
-    transaction.forEach((trn) => {
-      return TransactionSourceRepository.save(trn)
-    })
+    
+    return TransactionSourceRepository.save(transaction)
   }
 
   static update(id: number, updatedData: Partial<Transaction>) {

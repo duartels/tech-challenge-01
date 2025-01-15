@@ -1,6 +1,5 @@
-import { Transaction } from '@domain'
-
-import { TransactionSourceFacade } from '@/data-source'
+import { TransactionSourceFacade } from '@data-source'
+import { CreateTransactionDto,Transaction } from '@domain'
 
 export class TransactionRepository {
   static #STORAGE_KEY = 'transactions'
@@ -10,20 +9,30 @@ export class TransactionRepository {
 
     if (data) {
       const dataSource = TransactionSourceFacade.getAll()
-
       if (!dataSource.length) TransactionSourceFacade.save(JSON.parse(data))
-
       return JSON.parse(data)
     }
 
     return []
   }
 
-  static save(transaction: Transaction) {
+  static async save(transaction: CreateTransactionDto) {
     const transactions = this.getAll()
-    transactions.push(transaction)
+    const transactionToSave = { ...transaction, id: transactions.length + 1 }
+    transactions.push(transactionToSave)
     localStorage.setItem(this.#STORAGE_KEY, JSON.stringify(transactions))
-    return transaction
+
+    const res = await fetch('api/transaction', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ transactions: [transaction] })
+    })
+
+    if (!res.ok) throw new Error('Failed to save transaction')
+
+    return transactionToSave
   }
 
   static update(id: number, updatedData: Partial<Transaction>): void {

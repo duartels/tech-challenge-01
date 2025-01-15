@@ -1,4 +1,4 @@
-import { Transaction } from '@domain'
+import { CreateTransactionDto, Transaction } from '@domain'
 
 export class TransactionSourceRepository {
   static #transactions: Transaction[] = []
@@ -11,8 +11,13 @@ export class TransactionSourceRepository {
     return this.#transactions.find((transaction) => transaction.id === id)
   }
 
-  static save(transaction: Transaction) {
-    this.#transactions.push(transaction)
+  static save(transaction: CreateTransactionDto | Transaction) {
+    if (transaction && 'id' in transaction) {
+      this.#transactions.push(transaction)
+    } else {
+      const newTransaction = { id: this.#transactions.length + 1, ...transaction }
+      this.#transactions.push(newTransaction)
+    }
   }
 
   static update(id: number, updatedData: Partial<Transaction>) {
