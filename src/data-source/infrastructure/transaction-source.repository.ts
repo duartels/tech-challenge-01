@@ -14,17 +14,27 @@ export class TransactionSourceRepository {
   static save(transaction: CreateTransactionDto | Transaction) {
     if (transaction && 'id' in transaction) {
       this.#transactions.push(transaction)
-    } else {
+      return { status: 201, message: 'Salvo com sucesso' }
+    }
+      
+    if (transaction) {
       const newTransaction = { id: this.#transactions.length + 1, ...transaction }
       this.#transactions.push(newTransaction)
+      return { status: 201, message: 'Salvo com sucesso' }
     }
+    return { status: 500, message: 'Erro ao salvar' }
   }
 
   static update(id: number, updatedData: Partial<Transaction>) {
     const index = this.#transactions.findIndex(
       (transaction) => transaction.id === id,
     )
+
+    if (index === -1) return false
+
     this.#transactions[index] = { ...this.#transactions[index], ...updatedData }
+
+    return true
   }
 
   static delete(id: number) {
@@ -32,5 +42,9 @@ export class TransactionSourceRepository {
       (transaction) => transaction.id === id,
     )
     this.#transactions.splice(index, 1)
+
+    if (index === -1) return false
+
+    return true
   }
 }

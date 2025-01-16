@@ -27,12 +27,12 @@ export class TransactionRepository {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ transactions: [transaction] })
+      body: JSON.stringify({ transaction })
     })
 
     if (!res.ok) throw new Error('Failed to save transaction')
 
-    return transactionToSave
+    return res.json()
   }
 
   static update(id: number, updatedData: Partial<Transaction>): void {

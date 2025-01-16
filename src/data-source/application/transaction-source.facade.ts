@@ -1,6 +1,6 @@
 import { CreateTransactionDto, Transaction } from '@domain'
 
-import { TransactionSourceRepository } from '../infrastructure/transaction-source.repository'
+import { TransactionSourceRepository } from '../infrastructure'
 
 export class TransactionSourceFacade {
   static getAll() {
