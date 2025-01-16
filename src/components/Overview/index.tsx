@@ -20,7 +20,7 @@ export const Overview = ({ accountBalance, accountName }: OverviewProps) => {
 
   return (
     <div 
-      className={`flex flex-col justify-between sm:justify-normal bg-primary w-[321px] h-[655px] sm:w-[600px] sm:h-[402px] md:w-[690px] rounded-lg bg-[url('/overview-top-mobile.svg'),url('/overview-bottom-mobile.svg')] sm:bg-[url('/overview-top.svg'),url('/overview-bottom.svg')] md:bg-none bg-no-repeat [background-position:top_left,bottom_right] sm:[background-position:top_right,bottom_left]` }
+      className={`flex flex-col justify-between sm:justify-normal bg-primary w-[321px] h-[655px] sm:w-[600px] sm:h-[402px] md:w-[690px] rounded-lg bg-[url('/icons/overview-top-mobile.svg'),url('/icons/overview-bottom-mobile.svg')] sm:bg-[url('/icons/overview-top.svg'),url('/icons/overview-bottom.svg')] md:bg-none bg-no-repeat [background-position:top_left,bottom_right] sm:[background-position:top_right,bottom_left]` }
     >
       <div className="flex flex-col gap-10 sm:gap-0 items-center sm:items-start sm:flex-row justify-between p-10 sm:p-8">
         <div className="flex flex-col gap-6">
@@ -57,7 +57,7 @@ export const Overview = ({ accountBalance, accountName }: OverviewProps) => {
 
       <div className='pb-8 sm:pb-0 sm:pl-8 flex justify-center sm:justify-start sm:relative md:hidden'>
         <Image 
-          src="/overview-money.svg" 
+          src="/icons/overview-money.svg" 
           alt='Money illustration' 
           width={283}
           height={228}
