@@ -9,7 +9,8 @@ export class TransactionSourceFacade {
 
   static save(transaction: CreateTransactionDto | Transaction[]) {
     if (Array.isArray(transaction)) {
-      return transaction.forEach((trn) => TransactionSourceRepository.save(trn))
+      transaction.forEach((trn) => TransactionSourceRepository.save(trn))
+      return transaction
     }
     
     return TransactionSourceRepository.save(transaction)

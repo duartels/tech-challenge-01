@@ -37,7 +37,7 @@ export class StorageRepository {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ transactions }),
+      body: JSON.stringify( transactions ),
     })
   }
 }
