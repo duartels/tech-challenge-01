@@ -1,14 +1,14 @@
 'use client';
 
 import { Button, Input, Select } from '@components'
-import { CreateTransactionDto, navOptions } from '@domain'
+import { CreateTransactionDto, NavOptions } from '@domain'
 import { useValidateAndSyncData } from '@hooks'
 import { useTransaction } from '@hooks'
 import { useState } from 'react'
 
-import { transactionOptions } from '../constants/transaction'
 import { Header } from '../components/Header';
 import { TabletNavHeader } from '../components/Header/Components/TabletNavHeader';
+import { transactionOptions } from '../constants/transaction'
 
 export default function Home() {
   useValidateAndSyncData()

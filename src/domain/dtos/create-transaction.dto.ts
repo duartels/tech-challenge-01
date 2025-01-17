@@ -1,3 +1,3 @@
 import { Transaction } from "../types";
 
-export interface CreateTransactionDto extends Omit<Transaction, 'id'> { }
+export type CreateTransactionDto = Omit<Transaction, 'id'>;
