@@ -1,27 +1,24 @@
+import { HeaderProps } from '@domain'
 import React from 'react'
-import { HeaderProps } from '../..'
 
-export type TabletNavHeaderProps = {
+type TabletNavHeaderProps = {
   menuOptions: HeaderProps['menuOptions']
 }
 
-export const TabletNavHeader: React.FC<TabletNavHeaderProps> = ({
-  menuOptions
-}) => {
-  const gap =
-    menuOptions.length > 0 ? `${100 / menuOptions.length / 2}%` : '1rem'
+export const TabletNavHeader: React.FC<TabletNavHeaderProps> = ({ menuOptions }) => {
+  const gap = menuOptions.length > 0 ? `${100 / menuOptions.length / 2}%` : '1rem';
   return (
     <nav className='w-full flex justify-center items-center m-6'>
-      <div className='w-full max-w-4xl grid grid-flow-col auto-cols-fr gap-4  justify-center px-4 hidden sm:flex md:hidden'>
+      <div className={`w-full max-w-4xl grid-flow-col auto-cols-fr gap-[${gap}] justify-center px-4 hidden sm:flex md:hidden`}>
         {menuOptions.map((option, index) => (
           <a
-            className='text-black-default whitespace-nowrap text-sm pb-2 text-center  cursor-pointer hover:text-highlight  hover:transition-all hover:border-b-[3px] hover:border-highlight ease-in-out'
-            key={`nav-${option}-${index}`}
+            key={index}
+            className='text-black-default whitespace-nowrap text-sm pb-2 text-center cursor-pointer hover:text-highlight hover:transition-all hover:border-b-[3px] hover:border-highlight ease-in-out'
           >
             {option}
           </a>
         ))}
       </div>
     </nav>
-  )
-}
+  );
+};

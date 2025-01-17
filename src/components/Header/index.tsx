@@ -1,13 +1,9 @@
+import { HeaderProps } from '@domain'
+import { useModal } from '@hooks'
 import Image from 'next/image'
-import { useModal } from '../../app/hooks/useModal'
-import { Modal } from '../Modal'
 import React, { useCallback } from 'react'
-import { TabletNavHeader } from './Components/TabletNavHeader'
 
-export type HeaderProps = {
-  name: string
-  menuOptions: string[]
-}
+import { Modal } from '../Modal'
 
 export const Header: React.FC<HeaderProps> = ({ name, menuOptions }) => {
   const { isModalOpen, closeModal, openModal } = useModal()
@@ -53,9 +49,8 @@ export const Header: React.FC<HeaderProps> = ({ name, menuOptions }) => {
                   </div>
                   <hr
                     key={`divider-${option}-${index}`}
-                    className={`h-0.5 border-t-0 bg-black-default ${
-                      index === menuOptions.length - 1 ? 'hidden' : ''
-                    }`}
+                    className={`h-0.5 border-t-0 bg-black-default ${index === menuOptions.length - 1 ? 'hidden' : ''
+                      }`}
                   />
                 </>
               )
