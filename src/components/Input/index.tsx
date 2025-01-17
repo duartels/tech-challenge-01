@@ -4,7 +4,7 @@ export type InputProps = {
 
 export const Input = ({ label, ...props }: InputProps) => {
   return (
-    <div className="w-[144px] sm:w-[250px] flex flex-col gap-4">
+    <div className="w-[144px] sm:w-[250px] flex flex-col text-black">
       {label && (
         <label htmlFor="input" className="text-tertiary font-semibold">
           {label}
