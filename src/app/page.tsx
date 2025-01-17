@@ -1,16 +1,25 @@
-'use client'
+'use client';
 
 import { Button, Input, Select } from '@components'
-import { CreateTransactionDto } from '@domain'
+import { CreateTransactionDto, navOptions } from '@domain'
 import { useValidateAndSyncData } from '@hooks'
 import { useTransaction } from '@hooks'
 import { useState } from 'react'
 
 import { transactionOptions } from '../constants/transaction'
+import { Header } from '../components/Header';
+import { TabletNavHeader } from '../components/Header/Components/TabletNavHeader';
 
 export default function Home() {
   useValidateAndSyncData()
   const { saveTransaction } = useTransaction()
+  
+  const navOptions = [
+		NavOptions.HOME,
+		NavOptions.INVESTMENTS,
+		NavOptions.OTHER_SERVICES,
+		NavOptions.TRANSFERS,
+	]
 
   const [transaction, setTransaction] = useState<CreateTransactionDto>({
     amount: 0,
@@ -37,7 +46,11 @@ export default function Home() {
 
   return (
     <>
+      <div className="flex flex-col items-center justify-start h-screen">
+        <Header name={"Joana D'arc"} menuOptions={navOptions} />
+        <TabletNavHeader menuOptions={navOptions} />
       <pre>Veja a api em /api/transaction</pre>
+      </div>
       <div className="flex items-center justify-center h-screen bg-gray-100">
         <form onSubmit={handleSubmit} className="bg-primary p-6 rounded shadow-md w-full max-w-md">
           <h2 className="text-2xl text-tertiary font-bold mb-4">Criar Transação</h2>

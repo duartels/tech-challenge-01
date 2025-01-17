@@ -11,7 +11,7 @@ export const Input = ({ label, ...props }: InputProps) => {
         </label>
       )}
       <input
-        className="w-full h-12 bg-white rounded-lg text-black text-center border-[1px] border-primary focus:outline-none "
+        className="w-full h-12 bg-white rounded-lg text-black-grayish text-center border-[1px] border-primary focus:outline-none "
         {...props}
       />
     </div>

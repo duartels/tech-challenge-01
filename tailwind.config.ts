@@ -4,7 +4,7 @@ export default {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
     extend: {
@@ -15,20 +15,24 @@ export default {
         secondary: '#FF5031',
         tertiary: '#DEE9EA',
         quarternary: '#F8F8F8',
-        black: '#444444',
+        black: {
+          default: '#000000',
+          grayish: '#444444'
+        },
+        highlight: '#47A138'
       },
       fontFamily: {
-        inter: ['var(--font-inter)', 'Inter', 'sans-serif'],
+        inter: ['var(--font-inter)', 'Inter', 'sans-serif']
       },
       fontSize: {
         sm: ['0.812rem', { lineHeight: '0.975rem' }],
-        '2xl': ['1.562rem', { lineHeight: '1.875rem' }],
+        '2xl': ['1.562rem', { lineHeight: '1.875rem' }]
       },
       screens: {
-        sm: '360',
-        md: '720',
-      },
-    },
+        sm: '412',
+        md: '720'
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 } satisfies Config
