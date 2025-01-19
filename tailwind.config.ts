@@ -19,7 +19,10 @@ export default {
           default: '#000000',
           grayish: '#444444'
         },
-        highlight: '#47A138'
+        highlight: '#47A138',
+        gray: {
+          background: '#CBCBCB'
+        }
       },
       fontFamily: {
         inter: ['var(--font-inter)', 'Inter', 'sans-serif']
