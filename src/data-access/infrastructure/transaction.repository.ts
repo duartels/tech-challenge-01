@@ -19,6 +19,7 @@ export class TransactionRepository {
   static async save(transaction: CreateTransactionDto) {
     const transactions = this.getAll()
     const transactionToSave = { ...transaction, id: transactions.length + 1 }
+    
     transactions.push(transactionToSave)
     localStorage.setItem(this.#STORAGE_KEY, JSON.stringify(transactions))
 
@@ -27,7 +28,7 @@ export class TransactionRepository {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ transaction })
+      body: JSON.stringify( transactionToSave )
     })
 
     if (!res.ok) throw new Error('Failed to save transaction')
