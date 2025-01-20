@@ -1,10 +1,10 @@
 import { SidebarProps } from '../../domain';
 
-export const Sidebar: React.FC<SidebarProps> = ({ title, menuOptions, isOpen, onClose }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ title, menuOptions, isOpen, onClose, orientation = 'left', hideInBreakpoints }) => {
 	return (
 		<div
 			id="drawer-navigation"
-			className={`fixed top-0 left-0 z-40 w-64 h-screen p-4 overflow-y-auto transition-transform bg-white  hidden sm: hidden md:block ${
+			className={`fixed top-0 ${orientation === 'left' ? 'left-0' : 'right-0'} z-40 w-64 h-screen p-4 overflow-y-auto transition-transform bg-white  ${hideInBreakpoints && 'hidden sm: hidden md:block'} ${
 				isOpen ? 'translate-x-0' : '-translate-x-full'
 			} bg-white`}
 			tabIndex={-1}

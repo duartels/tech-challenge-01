@@ -3,4 +3,6 @@ export interface SidebarProps {
 	menuOptions: string[];
 	isOpen: boolean;
 	onClose: () => void;
+	orientation?: 'left' | 'right';
+	hideInBreakpoints?: boolean;
 }

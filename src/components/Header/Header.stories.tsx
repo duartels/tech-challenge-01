@@ -1,6 +1,8 @@
-import { Meta, StoryObj } from '@storybook/react';
+// src/stories/Header.stories.tsx
 
+import { Meta, StoryObj } from '@storybook/react';
 import { Header } from '.';
+import { HeaderProps } from '../../domain';
 
 const meta: Meta<typeof Header> = {
 	title: 'Components/Header',
@@ -15,34 +17,36 @@ const meta: Meta<typeof Header> = {
 				sm: {
 					name: 'Small (sm)',
 					styles: {
-						width: '412px',
+						width: '640px',
 						height: '800px'
 					}
 				},
 				md: {
 					name: 'Medium (md)',
 					styles: {
-						width: '720px',
+						width: '768px',
 						height: '1024px'
 					}
 				},
 				lg: {
 					name: 'Large (lg)',
 					styles: {
-						width: '1200px',
+						width: '1024px',
 						height: '800px'
 					}
 				}
 			},
-			defaultViewport: 'md'
+			defaultViewport: 'responsive'
 		}
 	}
 };
 
 export default meta;
 
+type Story = StoryObj<HeaderProps>;
+
 // Default story with responsive behavior
-export const Default: StoryObj<typeof Header> = {
+export const Default: Story = {
 	args: {
 		name: 'My Application',
 		menuOptions: ['Option 1', 'Option 2', 'Option 3']
@@ -55,7 +59,7 @@ export const Default: StoryObj<typeof Header> = {
 };
 
 // Small screen example
-export const SmallScreen: StoryObj<typeof Header> = {
+export const SmallScreen: Story = {
 	args: {
 		name: 'Small Screen Header',
 		menuOptions: ['Small Option 1', 'Small Option 2', 'Small Option 3']
@@ -68,7 +72,7 @@ export const SmallScreen: StoryObj<typeof Header> = {
 };
 
 // Medium screen example
-export const MediumScreen: StoryObj<typeof Header> = {
+export const MediumScreen: Story = {
 	args: {
 		name: 'Medium Screen Header',
 		menuOptions: ['Medium Option 1', 'Medium Option 2', 'Medium Option 3']
@@ -81,7 +85,7 @@ export const MediumScreen: StoryObj<typeof Header> = {
 };
 
 // Large screen example
-export const LargeScreen: StoryObj<typeof Header> = {
+export const LargeScreen: Story = {
 	args: {
 		name: 'Large Screen Header',
 		menuOptions: ['Large Option 1', 'Large Option 2', 'Large Option 3']
