@@ -11,7 +11,7 @@ export default function Home() {
 	useValidateAndSyncData();
 
 	const navOptions = [NavOptions.HOME, NavOptions.INVESTMENTS, NavOptions.OTHER_SERVICES, NavOptions.TRANSFERS];
-	const { isSidebarOpen, closeSidebar } = useSidebar();
+	const { isSidebarOpen } = useSidebar();
 
 	return (
 		<>
@@ -20,7 +20,7 @@ export default function Home() {
 				<TabletNavHeader menuOptions={navOptions} />
 				<pre>Veja a api em /api/transaction</pre>
 
-				<Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} menuOptions={navOptions} />
+				<Sidebar isOpen={isSidebarOpen} menuOptions={navOptions} hideInBreakpoints />
 
 				<NewTransaction />
 			</div>
