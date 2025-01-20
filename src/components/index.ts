@@ -6,3 +6,4 @@ export * from './Header';
 export * from './Overview';
 export * from './Modal';
 export * from './Sidebar';
+export * from './ModalEditTransaction';

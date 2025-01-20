@@ -1,7 +1,7 @@
 import { SelectProps } from '@domain';
 import { useEffect, useRef, useState } from 'react';
 
-export const Select = ({ options, name = 'select', placeholder = 'Select an option', value, onChange }: SelectProps) => {
+export const Select = ({ options, name = 'select', placeholder = 'Select an option', value, onChange, fullWidth = false }: SelectProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const ref = useRef<HTMLDivElement>(null);
 
@@ -28,7 +28,7 @@ export const Select = ({ options, name = 'select', placeholder = 'Select an opti
 	const selectedOption = options.find((option) => option.value === value);
 
 	return (
-		<div ref={ref} className="relative w-[280px] sm:w-[350px]">
+		<div ref={ref} className={`relative ${fullWidth ? 'w-full' : 'w-[280px] sm:w-[350px]'}`}>
 			<button
 				type="button"
 				className="relative w-full h-12 px-4 bg-white text-primary border border-primary rounded-lg focus:outline-none flex justify-between items-center z-10"
