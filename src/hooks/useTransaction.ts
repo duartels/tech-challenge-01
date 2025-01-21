@@ -1,5 +1,5 @@
 import { TransactionFacade } from '@data-access';
-import { CreateTransactionDto, UpdateTransactionDto } from '@domain';
+import { CreateTransactionDto } from '@domain';
 
 export function useTransaction() {
 	const saveTransaction = async (transaction: CreateTransactionDto) => {
@@ -14,13 +14,9 @@ export function useTransaction() {
 		return TransactionFacade.getOne(id);
 	};
 
-	const updateTransaction = (id: number, transaction: UpdateTransactionDto) => {
-		return TransactionFacade.update(id, transaction);
-	};
-
 	const deleteTransaction = (id: number) => {
 		return TransactionFacade.delete(id);
 	};
 
-	return { saveTransaction, getTransactions, getTransaction, updateTransaction, deleteTransaction };
+	return { saveTransaction, getTransactions, getTransaction, deleteTransaction };
 }
