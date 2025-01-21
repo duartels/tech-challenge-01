@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { format } from 'date-fns';
+import React, { useEffect, useState } from 'react';
 import { GoAlertFill } from 'react-icons/go';
 
-import { Modal } from '../Modal';
-import { useTransaction } from '../../hooks';
 import { ModalDeleteConfirmationProps, Transaction } from '../../domain';
-import { format } from 'date-fns';
+import { useTransaction } from '../../hooks';
+import { Modal } from '../Modal';
 
 const ModalDeleteConfirmation: React.FC<ModalDeleteConfirmationProps> = ({ closeModal, transactionId }) => {
 	const { getTransaction, deleteTransaction } = useTransaction();
