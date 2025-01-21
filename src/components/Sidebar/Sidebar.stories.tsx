@@ -7,12 +7,12 @@ export default {
 	title: 'Components/Sidebar',
 	component: Sidebar,
 	argTypes: {
-		orientation: {
-			control: {
-				type: 'select',
-				options: ['left', 'right']
-			}
-		}
+		title: { control: 'text' },
+		menuOptions: {
+			control: 'object',
+			description: 'Array of menu options (e.g. ["Home", "About", "Contact"])'
+		},
+		isOpen: { control: 'boolean' }
 	}
 } as Meta<SidebarProps>;
 
@@ -21,17 +21,17 @@ type Story = StoryObj<SidebarProps>;
 export const Default: Story = {
 	args: {
 		title: 'Menu',
-		menuOptions: ['Home', 'About', 'Contact'],
+		menuOptions: ['Home', 'About', 'Contact'], // an array of strings
 		isOpen: true,
-		onClose: () => alert('Close button clicked'),
-		orientation: 'left'
+		onClose: () => alert('Close button clicked')
 	}
 };
 
-export const RightOrientation: Story = {
+export const NotClosable: Story = {
 	args: {
-		...Default.args,
-		orientation: 'right'
+		title: 'Menu',
+		menuOptions: ['Home', 'About', 'Contact'],
+		isOpen: true
 	}
 };
 
