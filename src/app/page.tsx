@@ -20,9 +20,12 @@ export default function Home() {
 				<TabletNavHeader menuOptions={navOptions} />
 				<pre>Veja a api em /api/transaction</pre>
 
-				<Sidebar isOpen={isSidebarOpen} menuOptions={navOptions} hideInBreakpoints />
-
-				<NewTransaction />
+				<div className="flex justify-between items-start h-screen gap-4 md:px-6">
+					<Sidebar isOpen={isSidebarOpen} menuOptions={navOptions} hideInBreakpoints />
+					<NewTransaction />
+					{/*TO-DO: Replace by the list. This second sidebar is fulfilling the list place for better visualization.*/}
+					<Sidebar isOpen={isSidebarOpen} menuOptions={navOptions} hideInBreakpoints />
+				</div>
 			</div>
 		</>
 	);
