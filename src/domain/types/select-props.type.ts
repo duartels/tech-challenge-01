@@ -8,4 +8,5 @@ export type SelectProps = {
   placeholder: string
   value: string
   onChange: (value: ChangeEvent<HTMLInputElement>) => void
+  fullWidth?: boolean
 }
