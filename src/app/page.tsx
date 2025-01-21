@@ -1,6 +1,6 @@
 'use client';
 
-import { Header, ModalEditTransaction, NewTransaction, Sidebar } from '@components';
+import { Header, NewTransaction, Sidebar } from '@components';
 import { NavOptions } from '@domain';
 import { useValidateAndSyncData } from '@hooks';
 
