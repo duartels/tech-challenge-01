@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Esse é um projeto desenvolvido para a Pós-Tech de Front-End Engineering da FIAP.
 
-## Getting Started
+- É referente ao Tech Challenge 01.
 
-First, run the development server:
+# Instruções para executar a aplicação
+
+## Instalando as dependências
+
+Execute o comando:
+
+```bash
+npm install
+```
+
+## Iniciando a aplicação
+
+Execute o seguinte comando:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra então [http://localhost:3000](http://localhost:3000) no seu navegador para que consiga acessar a aplicação em funcionamento.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Acessando o storybook
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Você pode executar o seguinte comando:
 
-## Learn More
+```bash
+npm run storybook
+```
 
-To learn more about Next.js, take a look at the following resources:
+Então será aberto automaticamente uma janela do seu navegador padrão, com a documentação dos componentes da aplicação.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Ou você pode acessar diretamente a seguinte url: [http://localhost:6006](http://localhost:6006)
