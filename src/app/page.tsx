@@ -1,6 +1,6 @@
 'use client';
 
-import { Header, NewTransaction, Sidebar } from '@components';
+import { Header, ModalEditTransaction, NewTransaction, Sidebar } from '@components';
 import { NavOptions } from '@domain';
 import { useValidateAndSyncData } from '@hooks';
 
@@ -21,7 +21,6 @@ export default function Home() {
 				<pre>Veja a api em /api/transaction</pre>
 
 				<Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} menuOptions={navOptions} />
-
 				<NewTransaction />
 			</div>
 		</>
