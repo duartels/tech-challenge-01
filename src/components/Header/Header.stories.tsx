@@ -44,7 +44,6 @@ export default meta;
 
 type Story = StoryObj<HeaderProps>;
 
-// Default story with responsive behavior
 export const Default: Story = {
 	args: {
 		name: 'My Application',
@@ -57,7 +56,6 @@ export const Default: Story = {
 	}
 };
 
-// Small screen example
 export const SmallScreen: Story = {
 	args: {
 		name: 'Small Screen Header',
@@ -65,12 +63,11 @@ export const SmallScreen: Story = {
 	},
 	parameters: {
 		viewport: {
-			defaultViewport: 'sm' // Force 'sm' viewport for this story
+			defaultViewport: 'sm'
 		}
 	}
 };
 
-// Medium screen example
 export const MediumScreen: Story = {
 	args: {
 		name: 'Medium Screen Header',
@@ -83,7 +80,6 @@ export const MediumScreen: Story = {
 	}
 };
 
-// Large screen example
 export const LargeScreen: Story = {
 	args: {
 		name: 'Large Screen Header',

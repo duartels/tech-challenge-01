@@ -1,5 +1,3 @@
-// src/components/Header.tsx
-
 import { HeaderProps } from '@domain';
 import { useModal } from '@hooks';
 import Image from 'next/image';
@@ -13,7 +11,7 @@ export const Header: React.FC<HeaderProps> = ({ name, menuOptions }) => {
 	const handleOpenModal = useCallback(() => openModal(), [openModal]);
 
 	return (
-		<header className="bg-primary w-full flex justify-center items-center py-3 px-4 mb-6 z-20">
+		<header className="bg-primary w-full flex justify-center items-center py-3 px-4 z-20">
 			<div className="max-w-2xl w-full flex justify-between sm:justify-end">
 				<button className="sm:hidden hover:cursor-pointer" onClick={handleOpenModal}>
 					<Image width={32} height={32} src="./icons/icon_menu.svg" alt="menu-button" />

@@ -1,18 +1,20 @@
+import Image from 'next/image';
+
 import { SidebarProps } from '../../domain';
 
-export const Sidebar: React.FC<SidebarProps> = ({ title, menuOptions, isOpen, onClose, orientation = 'left', hideInBreakpoints }) => {
-	const isClosable = !onClose;
+export const Sidebar: React.FC<SidebarProps> = ({ title, menuOptions, isOpen, onClose, hideInBreakpoints }) => {
+	const isClosable = !!onClose;
 	return (
 		<div
 			id="drawer-navigation"
-			className={`fixed ${orientation === 'left' ? 'left-0' : 'right-0'} z-40 w-64 h-screen p-4 overflow-y-auto transition-transform bg-white  ${hideInBreakpoints && 'hidden sm: hidden md:block'} ${
+			className={` top-0 'left-0' w-full min-w-[180px] h-full p-4 overflow-y-auto transition-transform  ${hideInBreakpoints && 'hidden sm: hidden md:block'} ${
 				isOpen ? 'translate-x-0' : '-translate-x-full'
-			} bg-white max-w-[200px] top-[64px]`}
+			} bg-white `}
 			tabIndex={-1}
 			aria-labelledby="drawer-navigation-label"
 		>
 			{!!title && (
-				<h5 id="drawer-navigation-label" className="text-base font-semibold text-gray-500 uppercase dark:text-gray-400">
+				<h5 id="drawer-navigation-label" className="text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">
 					{title}
 				</h5>
 			)}
@@ -24,15 +26,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ title, menuOptions, isOpen, on
 				aria-controls="drawer-navigation"
 				className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
 			>
-				{isClosable && (
-					<svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-						<path
-							fillRule="evenodd"
-							d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-							clipRule="evenodd"
-						></path>
-					</svg>
-				)}
+				{isClosable && <Image width={20} height={20} src={'./icons/close_icon.svg'} alt="close_icon" />}
 				<span className="sr-only">Close menu</span>
 			</button>
 
