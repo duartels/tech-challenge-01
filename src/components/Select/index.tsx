@@ -1,11 +1,19 @@
 import { SelectProps } from '@domain';
 import { useEffect, useRef, useState } from 'react';
 
-export const Select = ({ options, name = 'select', placeholder = 'Select an option', value, onChange, fullWidth = false }: SelectProps) => {
+export const Select = ({
+	options,
+	name = 'select',
+	placeholder = 'Select an option',
+	value,
+	onChange,
+	fullWidth = false,
+	disabled = false
+}: SelectProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const ref = useRef<HTMLDivElement>(null);
 
-	const toggleDropdown = () => setIsOpen((prev) => !prev);
+	const toggleDropdown = () => !disabled && setIsOpen((prev) => !prev);
 
 	const handleOptionClick = (optionValue: string) => {
 		onChange({
@@ -31,15 +39,17 @@ export const Select = ({ options, name = 'select', placeholder = 'Select an opti
 		<div ref={ref} className={`relative ${fullWidth ? 'w-full' : 'w-[280px] sm:w-[350px]'}`}>
 			<button
 				type="button"
-				className="relative w-full h-12 px-4 bg-white text-primary border border-primary rounded-lg focus:outline-none flex justify-between items-center z-10"
+				className={`relative w-full h-12 px-4 bg-white text-primary border border-primary rounded-lg focus:outline-none flex justify-between items-center z-10 ${disabled && 'hover:cursor-not-allowed hover: brightness-75'}`}
 				onClick={toggleDropdown}
 			>
 				{selectedOption?.label || placeholder}
-				<span className={`transform transition-transform ${isOpen ? 'rotate-180' : 'rotate-0'}`}>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-						<path d="M7 10l5 5 5-5H7z" fill="#004D61" />
-					</svg>
-				</span>
+				{!disabled && (
+					<span className={`transform transition-transform ${isOpen ? 'rotate-180' : 'rotate-0'}`}>
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+							<path d="M7 10l5 5 5-5H7z" fill="#004D61" />
+						</svg>
+					</span>
+				)}
 			</button>
 			{isOpen && (
 				<ul className="absolute w-full bg-white border border-primary border-t-0 rounded-b-lg mt-[-1px] z-20">

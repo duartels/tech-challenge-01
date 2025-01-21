@@ -5,7 +5,9 @@ export type InputProps = {
 
 export const Input = ({ label, fullWidth = false, ...props }: InputProps) => {
 	return (
-		<div className={`${fullWidth ? 'w-full' : 'w-[144px] sm:w-[250px]'} flex flex-col text-black`}>
+		<div
+			className={`${fullWidth ? 'w-full' : 'w-[144px] sm:w-[250px]'} flex flex-col text-black ${props.disabled && 'hover:cursor-not-allowed hover: brightness-75'}`}
+		>
 			{label && (
 				<label htmlFor="input" className="text-primary font-semibold">
 					{label}
@@ -13,6 +15,7 @@ export const Input = ({ label, fullWidth = false, ...props }: InputProps) => {
 			)}
 			<input
 				className="w-full h-12 bg-white rounded-lg text-black-grayish text-center border-[1px] border-primary focus:outline-none "
+				disabled={props.disabled}
 				{...props}
 			/>
 		</div>
