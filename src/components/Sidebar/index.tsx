@@ -7,7 +7,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ title, menuOptions, isOpen, on
 	return (
 		<div
 			id="drawer-navigation"
-			className={` top-0 'left-0' z-40 w-full min-w-[180px] h-full p-4 overflow-y-auto transition-transform  ${hideInBreakpoints && 'hidden sm: hidden md:block'} ${
+			className={` top-0 'left-0' w-full min-w-[180px] h-full p-4 overflow-y-auto transition-transform  ${hideInBreakpoints && 'hidden sm: hidden md:block'} ${
 				isOpen ? 'translate-x-0' : '-translate-x-full'
 			} bg-white `}
 			tabIndex={-1}
