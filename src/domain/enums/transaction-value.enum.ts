@@ -1,6 +1,5 @@
 export enum TransactionValue {
-  CAMBIO = 'cambio',
+  SAQUE = 'saque',
   DOC_TED = 'doc-ted',
-  EMPRESTIMO_FIN = 'emprestimo-finan',
   DEPOSITO = 'deposito',
 }

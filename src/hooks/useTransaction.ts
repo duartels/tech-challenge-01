@@ -6,9 +6,10 @@ export function useTransaction() {
 		await TransactionFacade.save(transaction);
 	};
 
-	const getTransactions = () => {
-		return TransactionFacade.getAll();
-	};
+  const getTransactions = async () => {
+      return TransactionFacade.getAll()
+  }
+
 
 	const getTransaction = (id: number) => {
 		return TransactionFacade.getOne(id);

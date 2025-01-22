@@ -1,4 +1,4 @@
-import { NewTransactionFormData, newTransactionSchema } from '@domain';
+import { NewTransactionFormData, newTransactionSchema, TransactionValue } from '@domain';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTransaction } from '@hooks';
 import { Controller, useForm } from 'react-hook-form';
@@ -21,13 +21,19 @@ export const NewTransaction = () => {
 
 	const { saveTransaction } = useTransaction();
 
+	const NEGATIVES = [TransactionValue.SAQUE, TransactionValue.DOC_TED];
+
 	const handleSaveTransaction = async (data: NewTransactionFormData) => {
-		saveTransaction({
+		await saveTransaction({
 			...data,
+			amount: NEGATIVES.includes(data.type as TransactionValue) ? -data.amount : data.amount,
 			date: new Date(data.date),
 			user: 'JohnDoe'
+		}).then(() => {
+			handleReset();
+		}).finally(() => {
+			window.location.reload();
 		});
-		handleReset();
 	};
 
 	const handleReset = () => {
@@ -52,7 +58,7 @@ export const NewTransaction = () => {
 				/>
 
 				<div className="flex gap-4 flex-col sm:flex-row w-full">
-					<Input label="Valor" type="number" defaultValue={0.0} step={0.01} fullWidth {...register('amount')} />
+					<Input label="Valor" type="number" step={0.01} fullWidth {...register('amount')} />
 					<Input label="Data" type="date" fullWidth {...register('date')} />
 				</div>
 
