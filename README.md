@@ -42,8 +42,8 @@ Ou você pode acessar diretamente a seguinte url: [http://localhost:6006](http:/
 
 ## Mobile
 
-![alt text](image.png)
+![alt text](mobile.png)
 
 ## Tablet
 
-![alt text](image-1.png)
+![alt text](tablet.png)
