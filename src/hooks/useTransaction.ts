@@ -6,7 +6,7 @@ export function useTransaction() {
         await TransactionFacade.save(transaction)
     }
 
-    const getTransactions = () => {
+    const getTransactions = async () => {
         return TransactionFacade.getAll()
     }
 

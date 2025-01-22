@@ -35,7 +35,7 @@ export const Overview = ({ accountBalance, accountName }: OverviewProps) => {
 					</div>
 					<div className="border-t-2 border-gray-300 mt-4 mb-4 min-w-[180px]" />
 					<p>Conta Corrente</p>
-					<p className={`text-3xl mt-2 ${isBalanceVisible ? 'text-white' : 'blur'}`}>
+					<p className={`text-3xl whitespace-nowrap mt-2 ${isBalanceVisible ? 'text-white' : 'blur'}`}>
 						{isBalanceVisible
 							? Intl.NumberFormat('pt-BR', {
 									style: 'currency',

@@ -4,23 +4,23 @@ import { TransactionRepository } from '../infrastructure/transaction.repository'
 
 export class TransactionFacade {
 
-  static getAll(): Transaction[] {
-    return TransactionRepository.getAll()
+  static async getAll() {
+    return await TransactionRepository.getAll()
   }
 
   static async save(transaction: CreateTransactionDto) {
     return TransactionRepository.save(transaction)
   }
 
-  static getOne(id: number): Transaction {
-    return TransactionRepository.getOne(id)
+  static async getOne(id: number) {
+    return await TransactionRepository.getOne(id)
   }
 
-  static update(id: number, transaction: Transaction): void {
-    return TransactionRepository.update(id, transaction)
+  static async update(id: number, transaction: Transaction) {
+    return await TransactionRepository.update(id, transaction)
   }
 
-  static delete(id: number): void {
+  static async delete(id: number) {
     TransactionRepository.delete(id)
   }
 }
