@@ -18,14 +18,12 @@ export const NewTransaction = () => {
 		resolver: zodResolver(newTransactionSchema)
 	});
 
-	const { saveTransaction } = useTransaction();
-
-	const NEGATIVES = [TransactionValue.SAQUE, TransactionValue.DOC_TED];
+	const { saveTransaction, parseAmount } = useTransaction();
 
 	const handleSaveTransaction = async (data: NewTransactionFormData) => {
 		await saveTransaction({
 			...data,
-			amount: NEGATIVES.includes(data.type as TransactionValue) ? -data.amount : data.amount,
+			amount: parseAmount(data.amount, data.type as TransactionValue),
 			date: new Date(data.date)
 		})
 			.then(() => {
