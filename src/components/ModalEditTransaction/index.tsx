@@ -1,4 +1,4 @@
-import { EditTransactionFormData, ModalEditTransactionProps, newTransactionSchema, transactionOptions } from '@domain';
+import { EditTransactionFormData, ModalEditTransactionProps, newTransactionSchema, transactionOptions, TransactionValue } from '@domain';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTransaction } from '@hooks';
 import { format } from 'date-fns';
@@ -11,7 +11,7 @@ import { Modal } from '../Modal';
 import { Select } from '../Select';
 
 export const ModalEditTransaction = ({ onClose, transactionId }: ModalEditTransactionProps) => {
-	const { getTransaction, updateTransaction } = useTransaction();
+	const { getTransaction, updateTransaction, parseAmount } = useTransaction();
 
 	const {
 		register,
@@ -24,12 +24,15 @@ export const ModalEditTransaction = ({ onClose, transactionId }: ModalEditTransa
 	});
 
 	const handleEditTransaction = async (data: EditTransactionFormData) => {
-		updateTransaction(transactionId, {
+		await updateTransaction(transactionId, {
 			...data,
+			amount: parseAmount(data.amount, data.type as TransactionValue),
 			date: new Date(data.date),
 			id: transactionId
+		}).then(() => {
+			window.location.reload();
+			onClose();
 		});
-		onClose();
 	};
 
 	useEffect(() => {

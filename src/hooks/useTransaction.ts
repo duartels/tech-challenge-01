@@ -1,5 +1,5 @@
 import { TransactionFacade } from '@data-access';
-import { CreateTransactionDto, UpdateTransactionDto } from '@domain';
+import { CreateTransactionDto, TransactionValue, UpdateTransactionDto } from '@domain';
 
 export function useTransaction() {
 	const saveTransaction = async (transaction: CreateTransactionDto) => {
@@ -23,5 +23,11 @@ export function useTransaction() {
 		return TransactionFacade.delete(id);
 	};
 
-	return { saveTransaction, getTransactions, getTransaction, updateTransaction, deleteTransaction };
+	const parseAmount = (amount: number, type: TransactionValue) => {
+		const NEGATIVES = [TransactionValue.SAQUE, TransactionValue.DOC_TED];
+		return NEGATIVES.includes(type) ? -amount : amount;
+
+	}
+
+	return { saveTransaction, getTransactions, getTransaction, updateTransaction, deleteTransaction, parseAmount };
 }

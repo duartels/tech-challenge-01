@@ -19,8 +19,10 @@ const ModalDeleteConfirmation: React.FC<ModalDeleteConfirmationProps> = ({ close
 	}, [transactionId]);
 
 	const handleDeleteTransaction = async () => {
-		await deleteTransaction(transactionId);
-		closeModal();
+		await deleteTransaction(transactionId).then(() => {
+			window.location.reload();
+			closeModal();
+		});
 	};
 
 	return (

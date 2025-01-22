@@ -34,12 +34,28 @@ export class TransactionRepository {
       Object.assign(transaction, updatedData)
       localStorage.setItem(this.#STORAGE_KEY, JSON.stringify(transactions))
     }
+
+    const res = await fetch(`api/transaction?id=${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify( updatedData )
+    })
+
+    return res.json()
   }
 
   static async delete(id: number) {
     const transactions = await this.getAll()
     const newTransactions = transactions.filter((t) => t.id !== id)
     localStorage.setItem(this.#STORAGE_KEY, JSON.stringify(newTransactions))
+
+    const res = await fetch(`api/transaction?id=${id}`, {
+      method: 'DELETE'
+    })
+
+    return res.json()
   }
 
   static async getOne(id: number) {
