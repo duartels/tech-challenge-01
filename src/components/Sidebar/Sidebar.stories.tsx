@@ -1,6 +1,6 @@
+import { SidebarProps } from '@domain';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { SidebarProps } from '../../domain';
 import { Sidebar } from '.';
 
 export default {

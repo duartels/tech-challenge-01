@@ -1,6 +1,5 @@
+import { SidebarProps } from '@domain';
 import Image from 'next/image';
-
-import { SidebarProps } from '../../domain';
 
 export const Sidebar: React.FC<SidebarProps> = ({ title, menuOptions, isOpen, onClose, hideInBreakpoints }) => {
 	const isClosable = !!onClose;

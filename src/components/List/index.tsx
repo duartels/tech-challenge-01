@@ -1,6 +1,5 @@
+import { ListProps } from '@domain';
 import { useList } from '@hooks';
-
-import { ListProps } from '../../domain';
 
 export const List: React.FC<ListProps> = ({ transactions }) => {
     const { groupedTransactions, parseToReal, parseDate, parseType } = useList();

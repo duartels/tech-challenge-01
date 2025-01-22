@@ -1,9 +1,8 @@
-import { NavOptions, NewTransactionFormData, newTransactionSchema, TransactionValue } from '@domain';
+import { NewTransactionFormData, newTransactionSchema, transactionOptions, TransactionValue, NavOptions } from '@domain';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTransaction } from '@hooks';
 import { Controller, useForm } from 'react-hook-form';
 
-import { transactionOptions } from '../../constants/transaction';
 import { Button } from '../Button';
 import { Input } from '../Input';
 import { Select } from '../Select';
@@ -27,8 +26,7 @@ export const NewTransaction = () => {
 		await saveTransaction({
 			...data,
 			amount: NEGATIVES.includes(data.type as TransactionValue) ? -data.amount : data.amount,
-			date: new Date(data.date),
-			user: 'JohnDoe'
+			date: new Date(data.date)
 		})
 			.then(() => {
 				handleReset();
@@ -42,9 +40,7 @@ export const NewTransaction = () => {
 		reset({
 			amount: 0.0,
 			date: '',
-			description: '',
-			type: '',
-			category: ''
+			type: ''
 		});
 	};
 
@@ -66,12 +62,6 @@ export const NewTransaction = () => {
 					<Input label="Valor" type="number" step={0.01} fullWidth {...register('amount')} />
 					<Input label="Data" type="date" fullWidth {...register('date')} />
 				</div>
-
-				<div className="flex gap-4 flex-col sm:flex-row w-full">
-					<Input label="Descrição" fullWidth {...register('description')} />
-					<Input label="Categoria" fullWidth {...register('category')} />
-				</div>
-
 				<div className="flex gap-4 flex-col sm:flex-row items-center">
 					<Button type="submit" disabled={!isValid}>
 						Salvar
