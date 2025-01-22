@@ -1,6 +1,6 @@
+import { HeaderProps } from '@domain';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { HeaderProps } from '../../domain';
 import { Header } from '.';
 
 const meta: Meta<typeof Header> = {

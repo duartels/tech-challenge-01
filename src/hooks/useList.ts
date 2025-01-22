@@ -1,6 +1,4 @@
-import { Transaction } from "@domain";
-
-import { transactionOptions } from "../constants/transaction";
+import { Transaction, transactionOptions } from "@domain";
 
 export const useList = () => {
 
@@ -33,5 +31,5 @@ export const useList = () => {
     }
 
     return { groupedTransactions, parseToReal, parseDate, parseType };
-    
+
 }

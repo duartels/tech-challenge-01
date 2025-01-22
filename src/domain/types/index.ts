@@ -4,6 +4,6 @@ export * from './storage.interface';
 export * from './transaction.interface';
 export * from './overview.type';
 export * from './header-props.type';
-export * from './transaction.type';
+export * from './transaction-form.type';
 export * from './sidebar-props.type';
 export * from './list-props.type';

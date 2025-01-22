@@ -1,9 +1,9 @@
+import { ModalDeleteConfirmationProps, Transaction } from '@domain';
+import { useTransaction } from '@hooks';
 import { format } from 'date-fns';
 import React, { useEffect, useState } from 'react';
 import { GoAlertFill } from 'react-icons/go';
 
-import { ModalDeleteConfirmationProps, Transaction } from '../../domain';
-import { useTransaction } from '../../hooks';
 import { Modal } from '../Modal';
 
 const ModalDeleteConfirmation: React.FC<ModalDeleteConfirmationProps> = ({ closeModal, transactionId }) => {
@@ -11,8 +11,8 @@ const ModalDeleteConfirmation: React.FC<ModalDeleteConfirmationProps> = ({ close
 	const [transaction, setTransaction] = useState<Transaction>();
 
 	useEffect(() => {
-		const fetchTransaction = () => {
-			const transactionFromDatabase = getTransaction(transactionId);
+		const fetchTransaction = async () => {
+			const transactionFromDatabase = await getTransaction(transactionId);
 			if (Object.values(transactionFromDatabase).length) setTransaction(transactionFromDatabase);
 		};
 		fetchTransaction();
@@ -60,9 +60,6 @@ const ModalDeleteConfirmation: React.FC<ModalDeleteConfirmationProps> = ({ close
 									<b>Valor:</b> {`R$ ${transaction?.amount}`}
 								</li>
 								<b>|</b>
-								<li>
-									<b>Tipo:</b> {`${transaction?.category}`}
-								</li>
 							</ul>
 						</span>
 					</div>
