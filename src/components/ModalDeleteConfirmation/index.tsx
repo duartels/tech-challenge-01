@@ -60,6 +60,9 @@ const ModalDeleteConfirmation: React.FC<ModalDeleteConfirmationProps> = ({ close
 									<b>Valor:</b> {`R$ ${transaction?.amount}`}
 								</li>
 								<b>|</b>
+								<li>
+									<b>Tipo:</b> {`${transaction?.type}`}
+								</li>
 							</ul>
 						</span>
 					</div>
