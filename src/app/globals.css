@@ -11,6 +11,7 @@
   :root {
     --background: #e4ede3;
     --foreground: #ededed;
+    scroll-behavior: smooth;
   }
 }
 
