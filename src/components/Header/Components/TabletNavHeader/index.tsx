@@ -8,7 +8,7 @@ type TabletNavHeaderProps = {
 export const TabletNavHeader: React.FC<TabletNavHeaderProps> = ({ menuOptions }) => {
 	const gap = menuOptions.length > 0 ? `4` : '1rem';
 	return (
-		<nav className="w-full flex justify-center items-center m-6 hidden sm:flex md:hidden">
+		<nav className="w-full flex justify-center items-center mt-6 hidden sm:flex md:hidden">
 			<div className={`w-full max-w-4xl grid grid-flow-col auto-cols-fr gap-[${gap}] justify-center px-4 `}>
 				{menuOptions.map((option, index) => (
 					<a
