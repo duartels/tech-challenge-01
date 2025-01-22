@@ -1,7 +1,7 @@
+import { transactionOptions } from '@domain';
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 
-import { transactionOptions } from '../../constants/transaction';
 import { Select } from '.';
 
 const meta = {
