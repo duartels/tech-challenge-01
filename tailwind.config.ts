@@ -32,8 +32,8 @@ export default {
         '2xl': ['1.562rem', { lineHeight: '1.875rem' }]
       },
       screens: {
-        sm: '412',
-        md: '720'
+        sm: '430',
+        md: '780'
       }
     }
   },
