@@ -1,4 +1,4 @@
-import { NewTransactionFormData, newTransactionSchema, TransactionValue } from '@domain';
+import { NavOptions, NewTransactionFormData, newTransactionSchema, TransactionValue } from '@domain';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTransaction } from '@hooks';
 import { Controller, useForm } from 'react-hook-form';
@@ -29,11 +29,13 @@ export const NewTransaction = () => {
 			amount: NEGATIVES.includes(data.type as TransactionValue) ? -data.amount : data.amount,
 			date: new Date(data.date),
 			user: 'JohnDoe'
-		}).then(() => {
-			handleReset();
-		}).finally(() => {
-			window.location.reload();
-		});
+		})
+			.then(() => {
+				handleReset();
+			})
+			.finally(() => {
+				window.location.reload();
+			});
 	};
 
 	const handleReset = () => {
@@ -47,7 +49,10 @@ export const NewTransaction = () => {
 	};
 
 	return (
-		<div className="bg-gray-background w-full h-[680px]  sm:h-[450px] md:min-w-[580px] rounded-lg sm:p-8 flex flex-col items-center sm:items-start pt-8 bg-[url('/icons/new-transaction-top-mobile.svg'),url('/icons/new-transaction-bottom-mobile.svg')] sm:bg-[url('/icons/new-transaction-top.svg'),url('/icons/new-transaction-bottom.svg')] bg-no-repeat [background-position:top_left,bottom_right] sm:[background-position:top_right,bottom_left]">
+		<div
+			id={`${NavOptions.TRANSFERS}`}
+			className="bg-gray-background w-full h-[680px]  sm:h-[450px] md:min-w-[580px] rounded-lg sm:p-8 flex flex-col items-center sm:items-start pt-8 bg-[url('/icons/new-transaction-top-mobile.svg'),url('/icons/new-transaction-bottom-mobile.svg')] sm:bg-[url('/icons/new-transaction-top.svg'),url('/icons/new-transaction-bottom.svg')] bg-no-repeat [background-position:top_left,bottom_right] sm:[background-position:top_right,bottom_left]"
+		>
 			<h2 className="text-2xl text-primary font-bold">Nova Transação</h2>
 
 			<form onSubmit={handleSubmit(handleSaveTransaction)} className="mt-8 flex flex-col gap-8 items-center sm:items-start">

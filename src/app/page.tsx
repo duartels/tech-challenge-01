@@ -19,10 +19,10 @@ export default function Home() {
 			<div className="flex flex-col gap-4">
 				<Header name="Joana Da Silva Oliveira" menuOptions={navOptions} />
 				<TabletNavHeader menuOptions={navOptions} />
-				<div className="flex items-start gap-4 justify-center">
+				<div className="flex flex-col md:flex-row items-center md:items-start gap-4 justify-center">
 					<Sidebar isOpen={isSidebarOpen} menuOptions={navOptions} hideInBreakpoints />
-					<section className='flex flex-col gap-4'>
-						<Overview accountBalance={balance} accountName='Joana Da Silva Oliveira' />
+					<section className="flex flex-col gap-4">
+						<Overview accountBalance={balance} accountName="Joana Da Silva Oliveira" />
 						<NewTransaction />
 					</section>
 					<List transactions={transactions} />

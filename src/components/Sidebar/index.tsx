@@ -19,7 +19,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ title, menuOptions, isOpen, on
 				</h5>
 			)}
 
-			{/* Close button */}
 			<button
 				type="button"
 				onClick={onClose}
@@ -30,13 +29,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ title, menuOptions, isOpen, on
 				<span className="sr-only">Close menu</span>
 			</button>
 
-			{/* Menu items */}
 			<div className="py-4 overflow-y-auto">
 				<ul className="space-y-2 font-medium text-center">
 					{menuOptions.map((option, index) => (
 						<li key={index}>
 							<a
-								href="#"
+								href={`#${option}`}
 								className="flex justify-center items-center p-2 text-primary lg border-b-[2px] border-primary  hover:font-bold group "
 							>
 								<span className="ms-3">{option}</span>
