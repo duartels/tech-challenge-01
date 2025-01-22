@@ -33,3 +33,17 @@ npm run storybook
 Então será aberto automaticamente uma janela do seu navegador padrão, com a documentação dos componentes da aplicação.
 
 Ou você pode acessar diretamente a seguinte url: [http://localhost:6006](http://localhost:6006)
+
+# Link do vídeo de apresentação
+
+- [Vídeo de apresentação](https://youtu.be/iOYMhtQNwMQ)
+
+# Prints da aplicação em funcionamento de forma responsiva
+
+## Mobile
+
+![alt text](mobile.png)
+
+## Tablet
+
+![alt text](tablet.png)
